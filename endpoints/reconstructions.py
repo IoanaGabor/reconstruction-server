@@ -6,7 +6,7 @@ from reconstruction_service.reconstruction_service import ReconstructionService
 
 class VoxelReconstructionRequest(BaseModel):
     person_id: int
-    voxels: List[int]  
+    voxels: List[float]  
 
 def get_reconstruction_service():
     return ReconstructionService()

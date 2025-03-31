@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from endpoints import reconstructions
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+import uvicorn
 
 
 app = FastAPI()
@@ -17,3 +18,9 @@ app.add_middleware(
 app.include_router(reconstructions.router)
 
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, FastAPI!"}
+
+uvicorn.run(app, host="0.0.0.0", port=8000)
