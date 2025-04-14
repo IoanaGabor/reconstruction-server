@@ -21,9 +21,9 @@ def decode_base64_image(data: str) -> torch.Tensor:
     transform = transforms.ToTensor()
     return transform(image).unsqueeze(0)
 
-router = APIRouter(prefix="/reconstructions", tags=["Reconstructions"])
+router = APIRouter(prefix="/metrics", tags=["Metrics"])
 
-@router.post("/metrics")
+@router.post("/")
 def compute_metrics(pair: ImagePair, calculator : MetricsCalculator):
     img1 = decode_base64_image(pair.original).unsqueeze(0)
     img2 = decode_base64_image(pair.reconstructed).unsqueeze(0)
