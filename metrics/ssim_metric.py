@@ -17,7 +17,7 @@ class SSIMMetric(ImageSimilarityMetric):
         reconstructed_gray = rgb2gray(reconstructed)
         return float(ssim(
             reconstructed_gray, original_gray,
-            multichannel=False,
+            multichannel=True,
             gaussian_weights=True,
             sigma=1.5,
             use_sample_covariance=False,
