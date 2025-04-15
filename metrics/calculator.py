@@ -1,6 +1,6 @@
 import torch
-from ssim_metric import SSIMMetric
-from pixcorr_metric import PixCorrMetric
+from metrics.ssim_metric import SSIMMetric
+from metrics.pixcorr_metric import PixCorrMetric
 
 class MetricsCalculator:
     def __init__(self, device="cuda" if torch.cuda.is_available() else "cpu"):
