@@ -24,8 +24,8 @@ async def compute_metrics(
     reconstructed: UploadFile = File(...),
     calculator: MetricsCalculator = Depends(get_metrics_calculator)
 ):
-    img1 = read_image(original).unsqueeze(0)
-    img2 = read_image(reconstructed).unsqueeze(0)
+    img1 = read_image(original)
+    img2 = read_image(reconstructed)
 
     metrics = calculator.compute_all(img1, img2)
     return metrics
