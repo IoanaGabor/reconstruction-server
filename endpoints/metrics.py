@@ -13,7 +13,7 @@ class ImagePair(BaseModel):
     original: str  
     reconstructed: str  
 
-def decode_base64_image(data: str) -> torch.Tensor:
+def decode_base64_image(data: str):
     image_data = base64.b64decode(data)
     image = Image.open(io.BytesIO(image_data)).convert("RGB")
     image = image.resize((425, 425), Image.LANCZOS)
