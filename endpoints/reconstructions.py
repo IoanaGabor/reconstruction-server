@@ -12,9 +12,9 @@ def get_reconstruction_service():
     return ReconstructionService()
 
 
-router = APIRouter(prefix="/reconstructions", tags=["Reconstructions"])
+router = APIRouter(prefix="/reconstruct", tags=["Reconstructions"])
 
-@router.post("/reconstruct")
+@router.post("/")
 def reconstruct_image(
     request: VoxelReconstructionRequest,
     service: ReconstructionService = Depends(get_reconstruction_service),
