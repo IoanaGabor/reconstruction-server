@@ -13,6 +13,10 @@ class ImagePair(BaseModel):
     original: str  
     reconstructed: str  
 
+
+def get_metrics_calculator():
+    return MetricsCalculator()
+
 def decode_base64_image(data: str):
     image_data = base64.b64decode(data)
     image = Image.open(io.BytesIO(image_data)).convert("RGB")
@@ -24,7 +28,7 @@ def decode_base64_image(data: str):
 router = APIRouter(prefix="/metrics", tags=["Metrics"])
 
 @router.post("/")
-def compute_metrics(pair: ImagePair, calculator : MetricsCalculator):
+def compute_metrics(pair: ImagePair, calculator : MetricsCalculator = Depends(get_metrics_calculator)):
     img1 = decode_base64_image(pair.original).unsqueeze(0)
     img2 = decode_base64_image(pair.reconstructed).unsqueeze(0)
 
