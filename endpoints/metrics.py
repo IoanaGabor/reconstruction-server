@@ -15,8 +15,6 @@ def read_image(file: UploadFile):
 
     image_data = file.file.read()
     image = Image.open(io.BytesIO(image_data)).convert("RGB")
-    image = image.resize((425, 425), Image.LANCZOS)
-
     transform = transforms.ToTensor()
     return transform(image)
 

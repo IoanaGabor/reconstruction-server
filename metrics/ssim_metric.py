@@ -11,8 +11,8 @@ class SSIMMetric(ImageSimilarityMetric):
         self.preprocess = transforms.Resize(425, interpolation=transforms.InterpolationMode.BILINEAR)
 
     def compute(self, original: torch.Tensor, reconstructed: torch.Tensor) -> float:
-        original = self.preprocess(original).permute(1,2,0).cpu().numpy()
-        reconstructed = self.preprocess(reconstructed).permute(1,2,0).cpu().numpy()
+        original = self.preprocess(original).permute(0,2,3,1).cpu().numpy()
+        reconstructed = self.preprocess(reconstructed).permute(0,2,3,1).cpu().numpy()
         original_gray = rgb2gray(original)
         reconstructed_gray = rgb2gray(reconstructed)
         return float(ssim(
