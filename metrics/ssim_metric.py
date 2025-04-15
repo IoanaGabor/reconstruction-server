@@ -3,7 +3,7 @@ import numpy as np
 from torchvision import transforms
 from skimage.color import rgb2gray
 from skimage.metrics import structural_similarity as ssim
-from abstract_image_similarity import ImageSimilarityMetric
+from metrics.abstract_image_similarity import ImageSimilarityMetric
 
 class SSIMMetric(ImageSimilarityMetric):
     def __init__(self):

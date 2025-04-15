@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 from torchvision import transforms
-from image_similarity_metric import ImageSimilarityMetric
+from metrics.image_similarity_metric import ImageSimilarityMetric
 
 class PixCorrMetric(ImageSimilarityMetric):
     def __init__(self):
