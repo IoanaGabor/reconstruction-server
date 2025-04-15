@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from endpoints import reconstructions
+from endpoints import metrics
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import uvicorn
@@ -15,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],           
 )
 
+app.include_router(metrics.router)
 app.include_router(reconstructions.router)
 
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
